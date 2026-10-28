@@ -45,6 +45,8 @@ public class Main {
             System.out.println("Graduation Year : FAIL");
         }
 
+        System.out.println();
+
         if (eligible) {
             System.out.println("Final Result : ELIGIBLE");
         } else {
