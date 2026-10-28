@@ -11,9 +11,13 @@ public class Main {
 
         Candidate candidate = new Candidate(name, percentage, backlogs, graduationYear);
         Job job = new Job("Infosys", "Java Developer", 65.0, 0, 2026);
-        boolean percentagePass = candidate.getPercentage() >= job.getMinimumPercentage();
-        boolean backlogPass = candidate.getBacklogs() <= job.getMaximumBacklogs();
-        boolean yearPass = candidate.getGraduationYear() == job.getRequiredGraduationYear();
+        EligibilityRule percentageRule = new PercentageRule();
+        EligibilityRule backlogRule = new BacklogRule();
+        EligibilityRule yearRule = new GraduationYearRule();
+
+        boolean percentagePass = percentageRule.check(candidate, job);
+        boolean backlogPass = backlogRule.check(candidate, job);
+        boolean yearPass = yearRule.check(candidate, job);
 
         boolean eligible = percentagePass && backlogPass && yearPass;
 
